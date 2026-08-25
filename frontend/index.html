@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RN Reconciliation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>RN-Card Reconciliation</h1>
+        <p class="subtitle">Сверка данных между банковской выпиской и учётом РН-Карт</p>
+        
+        <div class="status-bar">
+            <span id="status"> Система готова</span>
+            <span id="timestamp"></span>
+        </div>
+
+        <div class="card">
+            <h2>Загрузка Excel файла</h2>
+            <form id="uploadForm">
+                <div class="file-input-wrapper">
+                    <input type="file" id="fileInput" accept=".xlsx,.xlsm" required>
+                    <label for="fileInput" id="fileLabel">Выберите файл...</label>
+                </div>
+                <button type="submit" id="uploadBtn"> Загрузить</button>
+            </form>
+            <div id="uploadResult" class="result hidden"></div>
+        </div>
+
+        <div class="card">
+            <h2>Запуск сверки</h2>
+            <button id="reconcileBtn"> Выполнить сверку</button>
+            <div id="reconcileResult" class="result hidden"></div>
+        </div>
+
+        <div class="card">
+            <h2>Логи</h2>
+            <button id="logsBtn"> Показать логи</button>
+            <pre id="logsOutput"></pre>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
