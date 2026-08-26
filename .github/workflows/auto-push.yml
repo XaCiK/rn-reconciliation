@@ -1,0 +1,41 @@
+name: Auto Push
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  auto-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: *** secrets.HERMES_SECRET_TOKEN_DNS }}
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "Hermes Agent"
+          git config --global user.email "hermes@nousresearch.com"
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git fetch origin main
+          CHANGES=$(git diff --name-only origin/main)
+          if [ -n "$CHANGES" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          git add .
+          git commit -m "auto: update files $(date +'%Y-%m-%d %H:%M:%S')" || true
+          git push origin main
