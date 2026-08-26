@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: *** secrets.HERMES_SECRET_TOKEN_DNS }}
+          token: ${{ secrets.HERMES_SECRET_TOKEN_DNS }}
 
       - name: Configure Git
         run: |
