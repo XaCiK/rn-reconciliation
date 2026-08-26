@@ -1,0 +1,14 @@
+
+Private Function FindUsedBankMatch(bankData As Collection, sumVal As Double, inn As String, kpp As String, contractId As String, rnDate As Date) As Variant
+    Dim i As Long, item As Object
+    For i = 1 To bankData.Count
+        Set item = bankData(i)
+        If Not item("Used") Then GoTo NextUBI
+        If ItemMatchesRNBank(item, sumVal, inn, kpp, contractId, rnDate) Then
+            Set FindUsedBankMatch = item
+            Exit Function
+        End If
+NextUBI:
+    Next i
+    Set FindUsedBankMatch = Nothing
+End Function

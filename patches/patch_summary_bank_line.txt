@@ -1,0 +1,2 @@
+        ElseIf key = "РН уже сопоставлено" Then
+            wsSum.Range(wsSum.Cells(r, 1), wsSum.Cells(r, 3)).Interior.Color = CLR_WARN

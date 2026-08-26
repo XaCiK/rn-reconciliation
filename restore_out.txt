@@ -1,0 +1,7 @@
+﻿python : Python 
+C:\Users\o_antonov\AppData\Local\Temp\ps-script-ef822ee5-2550-423d-8a3e-9fd0dc299f80.ps1:106 знак:43
++ ... \Users\o_antonov\NEW\RN"; python restore_modReconcile.py 2>&1 | Out-F ...
++                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Python :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 

@@ -1,0 +1,14 @@
+
+Private Function FindUsedRNMatch(rnData As Collection, sumVal As Double, inn As String, kpp As String, contractId As String, bankDate As Date) As Variant
+    Dim i As Long, item As Object
+    For i = 1 To rnData.Count
+        Set item = rnData(i)
+        If Not item("Used") Then GoTo NextUI
+        If ItemMatchesBankRN(item, sumVal, inn, kpp, contractId, bankDate) Then
+            Set FindUsedRNMatch = item
+            Exit Function
+        End If
+NextUI:
+    Next i
+    Set FindUsedRNMatch = Nothing
+End Function

@@ -1,0 +1,11 @@
+            Else
+                Dim usedRn As Variant
+                Set usedRn = FindUsedRNMatch(rnData, sumVal, inn, kpp, contractId, CDate(dt))
+                If Not usedRn Is Nothing Then
+                    matchStatus = "РН уже сопоставлено"
+                    note = "Пополнение РН уже привязано к другому платежу банка (транз. ID: " & usedRn("TransId") & ")"
+                Else
+                    matchStatus = "Не зачислено"
+                    note = "Нет пополнения в РН-Карт"
+                End If
+            End If

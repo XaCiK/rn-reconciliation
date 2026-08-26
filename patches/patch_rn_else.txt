@@ -1,0 +1,10 @@
+        ElseIf status <> "Дубль" Then
+            Dim usedBm As Variant
+            Set usedBm = FindUsedBankMatch(bankMatches, sumVal, inn, kpp, contractId, CDate(dt))
+            If Not usedBm Is Nothing Then
+                status = "Банк уже сопоставлен"
+                note = "Банковский платёж уже сопоставлен с другой транзакцией РН (банк ID: " & usedBm("BankId") & ")"
+            Else
+                note = "В банке нет подходящего платежа для сопоставления"
+            End If
+        End If
